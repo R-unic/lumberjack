@@ -143,9 +143,10 @@ export class DatabaseService implements OnInit, OnStart, OnPlayerJoin, OnPlayerL
 		for (const [key, value] of Object.entries(data)) {
 			if (typeOf(key) === "number") continue;
 
-			await this.initialize(player, key, value);
 			if (typeOf(value) === "table")
 				await this.initializeAll(player, value);
+			else
+				await this.initialize(player, key, value);
 		}
 	}
 
