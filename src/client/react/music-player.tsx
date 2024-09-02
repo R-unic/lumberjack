@@ -4,16 +4,17 @@ export function MusicPlayer(): React.Element {
   return (
     <frame
       key="Music"
+      AnchorPoint={new Vector2(1, 1)}
       BackgroundTransparency={1}
-      Position={new UDim2(0.798, 0, 0.952, 0)}
-      Size={new UDim2(0.202, 0, 0.048, 0)}
+      Position={UDim2.fromScale(1, 1)}
+      Size={UDim2.fromScale(0.202, 0.048)}
     >
       <frame
         key="Contain"
         AnchorPoint={new Vector2(0.5, 0.5)}
         BackgroundTransparency={1}
-        Position={new UDim2(0.5, 0, 0.5, 0)}
-        Size={new UDim2(0.95, 0, 0.84, 0)}
+        Position={UDim2.fromScale(0.5, 0.5)}
+        Size={UDim2.fromScale(0.95, 0.84)}
       >
         <frame
           key="SongFrame"
