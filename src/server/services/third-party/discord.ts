@@ -1,6 +1,5 @@
 import { Service } from "@flamework/core";
-import { HttpService as HTTP } from "@rbxts/services";
-import { $env } from "rbxts-transform-env";
+import { HttpService as HTTP, DataStoreService } from "@rbxts/services";
 
 import { HttpException, MissingEnvValueException } from "shared/exceptions";
 
@@ -20,7 +19,7 @@ export class DiscordService {
     // Comment/uncomment this based on whether or not you want Discord logs to be sent while testing
     // if (Runtime.IsStudio()) return;
 
-    const url = $env.string("DISCORD_WEBHOOK");
+    const [url] = DataStoreService.GetDataStore("OtherInfo").GetAsync<string>("DISCORD_WEBHOOK");
     if (url === undefined)
       throw new MissingEnvValueException("DISCORD_WEBHOOK");
 
