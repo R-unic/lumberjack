@@ -2,6 +2,10 @@ import { ReplicatedFirst, RunService as Runtime, MarketplaceService as Market } 
 
 export const Assets = ReplicatedFirst.Assets;
 
+export function getChildrenOfType<T extends keyof Instances, I extends Instances[T] = Instances[T]>(instance: Instance, className: T): I[] {
+  return instance.GetChildren().filter((child): child is I => child.IsA(className));
+}
+
 export interface DevProductInfo {
   readonly Description: string;
   readonly PriceInRobux: number;
